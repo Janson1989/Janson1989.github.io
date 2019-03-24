@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-03-24</span>
-            <span class="time">01:36:45</span>
+            <span class="time">01:44:24</span>
           </span>
           
           <!--  Categories  -->
@@ -139,7 +139,7 @@
 </ul>
 </li>
 </ul>
-<h1 id="工业界常用的召回架构"><a href="#工业界常用的召回架构" class="headerlink" title="工业界常用的召回架构"></a>工业界常用的召回架构</h1><p>！<a href="recall-architecture.png">Recall Architecture</a></p>
+<h1 id="工业界常用的召回架构"><a href="#工业界常用的召回架构" class="headerlink" title="工业界常用的召回架构"></a>工业界常用的召回架构</h1><p><img src="//Janson1989.github.io/2019/03/24/推荐系统实战入门学习-一/recall-architecture.png" alt="Recall Architecture"></p>
 <h3 id="离线模型"><a href="#离线模型" class="headerlink" title="离线模型"></a>离线模型</h3><p>根据用户的行为计算出推荐结果：计算出item之间的相似度、计算出具有某种特点lable的item的排序，比如之前说的离线计算好所有体育类的item的排序文件，这些文件都是直接写入KV的存储中的，在用户访问我们的服务时，Recall部分直接从KV中读取，因为我们存储的只是item_id，所以当我们得到了item_id，再去detail Server中得到每个item_id的详情，然后将详情拼好，传给Rank.</p>
 
         </div>
