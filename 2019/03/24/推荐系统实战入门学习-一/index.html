@@ -6,22 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content>
-  <meta name="author" content="John Doe">
+  <meta name="author" content="xiang">
   <!-- Open Graph Data -->
   <meta property="og:title" content="推荐系统实战入门学习（一）">
   <meta property="og:description" content>
-  <meta property="og:site_name" content="Hexo">
+  <meta property="og:site_name" content="xiangjian&#39;s blog">
   <meta property="og:type" content="article">
   <meta property="og:image" content="https://Janson1989.github.io">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="xiangjian&#39;s blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
 
   <!-- Site Title -->
-  <title>Hexo</title>
+  <title>xiangjian's blog</title>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -95,12 +95,12 @@
         <div class="post-info text-muted">
           
             <!-- Author -->
-            <span class="author info">By John Doe</span>
+            <span class="author info">By xiang</span>
           
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-03-24</span>
-            <span class="time">01:16:36</span>
+            <span class="time">01:31:39</span>
           </span>
           
           <!--  Categories  -->
@@ -130,16 +130,16 @@
 </ul>
 <h1 id="推荐系统在工业界的架构实现"><a href="#推荐系统在工业界的架构实现" class="headerlink" title="推荐系统在工业界的架构实现"></a>推荐系统在工业界的架构实现</h1><p><img src="//Janson1989.github.io/2019/03/24/推荐系统实战入门学习-一/architecture.png" alt="推荐系统架构"></p>
 <ul>
-<li>app(端)  </li>
-<li>web-api(前后端连接):透传并解析请求和结果，尽量不做策略，但会做一些log写实时消息队列/分布式存储，方便后续的数据分析和模型训练  </li>
-<li>rpc服务  <ul>
-<li>match:个性化召回（如某个用户过往经常点击体育类的item，那么用户画像就给他标上了体育的lable，下次用户访问我们的服务的时候，如果有较新的体育类新闻，会优先推荐给该用户，个性化召回算法是推荐好坏的天花板，因为这部分决定了候选集）  </li>
-<li>rank:排序，在决定了候选集之后，Rank决定展示给用户的顺序</li>
-<li>strategy:策略调整,增加一些规则，比如在信息流类的应用中，我们不想连续推荐同一作者的文章，那么我们可以增加一些打散的策略 </li>
+<li><strong>app</strong>(端)  </li>
+<li><strong>web-api</strong>(前后端连接):透传并解析请求和结果，尽量不做策略，但会做一些log写实时消息队列/分布式存储，方便后续的数据分析和模型训练  </li>
+<li><strong>rpc服务</strong>  <ul>
+<li><strong>match</strong>:个性化召回（如某个用户过往经常点击体育类的item，那么用户画像就给他标上了体育的lable，下次用户访问我们的服务的时候，如果有较新的体育类新闻，会优先推荐给该用户，个性化召回算法是推荐好坏的天花板，因为这部分决定了候选集）  </li>
+<li><strong>rank</strong>:排序，在决定了候选集之后，Rank决定展示给用户的顺序</li>
+<li><strong>strategy</strong>:策略调整,增加一些规则，比如在信息流类的应用中，我们不想连续推荐同一作者的文章，那么我们可以增加一些打散的策略 </li>
 </ul>
 </li>
 </ul>
-<p>#工业界常用的召回架构<br>！<a href="recall-architecture.png">Recall Architecture</a></p>
+<h1 id="工业界常用的召回架构"><a href="#工业界常用的召回架构" class="headerlink" title="工业界常用的召回架构"></a>工业界常用的召回架构</h1><p>！<a href="recall-architecture.png">Recall Architecture</a></p>
 <h3 id="离线模型"><a href="#离线模型" class="headerlink" title="离线模型"></a>离线模型</h3><p>根据用户的行为计算出推荐结果：计算出item之间的相似度、计算出具有某种特点lable的item的排序，比如之前说的离线计算好所有体育类的item的排序文件，这些文件都是直接写入KV的存储中的，在用户访问我们的服务时，Recall部分直接从KV中读取，因为我们存储的只是item_id，所以当我们得到了item_id，再去detail Server中得到每个item_id的详情，然后将详情拼好，传给Rank.</p>
 
         </div>
