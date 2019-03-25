@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-03-25</span>
-            <span class="time">11:15:36</span>
+            <span class="time">11:25:09</span>
           </span>
           
           <!--  Categories  -->
@@ -129,7 +129,7 @@
 </ul>
 <h1 id="基于物品的协同过滤（item-cf）"><a href="#基于物品的协同过滤（item-cf）" class="headerlink" title="基于物品的协同过滤（item-cf）"></a>基于物品的协同过滤（item-cf）</h1><p>给用户推荐他之前喜欢的物品相似的物品，基于用户行为衡量物品的相似，通过用户行为（点击、实际购买、一定时长的停留）来衡量用户的喜欢程度。  </p>
 <h3 id="基本算法"><a href="#基本算法" class="headerlink" title="基本算法"></a>基本算法</h3><ol>
-<li>根据用户的行为计算物品的相似度矩阵<br><img src="//Janson1989.github.io/2019/03/25/推荐系统实战入门学习（二）/相似度矩阵计算公式.png" alt="相似度矩阵计算公式"><br>u(i)表示对item i有过行为的用户集合，u(j)表示对item j有过行为的用户集合。分子部分表示用户的重合程度，分母主要做归一化。<br><img src="//Janson1989.github.io/2019/03/25/推荐系统实战入门学习（二）/推荐度计算公式.png" alt="推荐度计算公式">   <h3 id="公式升级"><a href="#公式升级" class="headerlink" title="公式升级"></a>公式升级</h3>活跃用户应该被降低在相似度公式中的贡献度<br><img src="//Janson1989.github.io/2019/03/25/推荐系统实战入门学习（二）/相似度矩阵计算升级公式.png" alt="相似度矩阵计算升级公式"><br>用户在不同时间对item的操作给予时间衰减惩罚<br><img src="//Janson1989.github.io/2019/03/25/推荐系统实战入门学习（二）/相似度矩阵计算升级2公式.png" alt="相似度矩阵计算升级2公式"> </li>
+<li>根据用户的行为计算物品的相似度矩阵<br><img src="//Janson1989.github.io/2019/03/25/推荐系统实战入门学习（二）/1.png" alt="相似度矩阵计算公式"><br>u(i)表示对item i有过行为的用户集合，u(j)表示对item j有过行为的用户集合。分子部分表示用户的重合程度，分母主要做归一化。<br><img src="//Janson1989.github.io/2019/03/25/推荐系统实战入门学习（二）/2.png" alt="推荐度计算公式">   <h3 id="公式升级"><a href="#公式升级" class="headerlink" title="公式升级"></a>公式升级</h3>活跃用户应该被降低在相似度公式中的贡献度<br><img src="//Janson1989.github.io/2019/03/25/推荐系统实战入门学习（二）/3.png" alt="相似度矩阵计算升级公式"><br>用户在不同时间对item的操作给予时间衰减惩罚<br><img src="//Janson1989.github.io/2019/03/25/推荐系统实战入门学习（二）/4.png" alt="相似度矩阵计算升级2公式"> </li>
 </ol>
 <h1 id="基于用户的协同过滤算法-user-cf"><a href="#基于用户的协同过滤算法-user-cf" class="headerlink" title="基于用户的协同过滤算法(user-cf)"></a>基于用户的协同过滤算法(user-cf)</h1><p>给用户推荐相似兴趣用户感兴趣的物品，主要有两个过程：</p>
 <ul>
@@ -137,7 +137,7 @@
 <li>找到集合用户感兴趣的而目标用户没行为过的item<h3 id="基本算法-1"><a href="#基本算法-1" class="headerlink" title="基本算法"></a>基本算法</h3></li>
 </ul>
 <ol>
-<li>计算用户相似度矩阵<br><img src="//Janson1989.github.io/2019/03/25/推荐系统实战入门学习（二）/用户相似度矩阵.png" alt="用户相似度矩阵"> <h3 id="公式升级-1"><a href="#公式升级-1" class="headerlink" title="公式升级"></a>公式升级</h3>降低那些异常活跃物品对与用户相似度的贡献<br><img src="//Janson1989.github.io/2019/03/25/推荐系统实战入门学习（二）/用户相似度矩阵升级.png" alt="用户相似度矩阵升级"><br>不同用户对同一item行为的时间段不同应该给予时间惩罚<br><img src="//Janson1989.github.io/2019/03/25/推荐系统实战入门学习（二）/用户相似度矩阵升级2.png" alt="用户相似度矩阵升级2"></li>
+<li>计算用户相似度矩阵<br><img src="//Janson1989.github.io/2019/03/25/推荐系统实战入门学习（二）/5.png" alt="用户相似度矩阵"> <h3 id="公式升级-1"><a href="#公式升级-1" class="headerlink" title="公式升级"></a>公式升级</h3>降低那些异常活跃物品对与用户相似度的贡献<br><img src="//Janson1989.github.io/2019/03/25/推荐系统实战入门学习（二）/6.png" alt="用户相似度矩阵升级"><br>不同用户对同一item行为的时间段不同应该给予时间惩罚<br><img src="//Janson1989.github.io/2019/03/25/推荐系统实战入门学习（二）/7.png" alt="用户相似度矩阵升级2"></li>
 </ol>
 <h1 id="item-cf与user-cf的比较"><a href="#item-cf与user-cf的比较" class="headerlink" title="item-cf与user-cf的比较"></a>item-cf与user-cf的比较</h1><ul>
 <li>推荐实时性：ucf不会随用户的行为马上发生改变</li>
