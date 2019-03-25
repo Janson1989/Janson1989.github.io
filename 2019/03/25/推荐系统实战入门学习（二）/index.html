@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content>
+  <meta name="author" content="xiangjian">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="推荐系统实战入门学习（二）">
+  <meta property="og:description" content>
+  <meta property="og:site_name" content="xiangjian&#39;s blog">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://Janson1989.github.io">
+  
+    <link rel="alternate" href="/atom.xml" title="xiangjian&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>xiangjian's blog</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">推荐系统实战入门学习（二）</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/<your-github-username>">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:<your-email-address>">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By xiangjian</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2019-03-25</span>
+            <span class="time">11:13:35</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/人工智能/">人工智能</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/推荐算法，人工智能/">#推荐算法，人工智能</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>基于物品的协同过滤，基于用户的协同过滤，上述两种过滤的优缺点。<br><a id="more"></a></p>
+<h1 id="个性化召回算法的必要性"><a href="#个性化召回算法的必要性" class="headerlink" title="个性化召回算法的必要性"></a>个性化召回算法的必要性</h1><ul>
+<li>信息过载，用户实际需求不明确（需要给出推荐）  </li>
+<li>强依赖于用户行为</li>
+</ul>
+<h1 id="基于物品的协同过滤（item-cf）"><a href="#基于物品的协同过滤（item-cf）" class="headerlink" title="基于物品的协同过滤（item-cf）"></a>基于物品的协同过滤（item-cf）</h1><p>给用户推荐他之前喜欢的物品相似的物品，基于用户行为衡量物品的相似，通过用户行为（点击、实际购买、一定时长的停留）来衡量用户的喜欢程度。  </p>
+<h3 id="基本算法"><a href="#基本算法" class="headerlink" title="基本算法"></a>基本算法</h3><ol>
+<li>根据用户的行为计算物品的相似度矩阵<br><img src="//Janson1989.github.io/2019/03/25/推荐系统实战入门学习（二）/相似度矩阵计算公式.png" alt="相似度矩阵计算公式"><br>u(i)表示对item i有过行为的用户集合，u(j)表示对item j有过行为的用户集合。分子部分表示用户的重合程度，分母主要做归一化。<br><img src="//Janson1989.github.io/2019/03/25/推荐系统实战入门学习（二）/推荐度计算公式.png" alt="推荐度计算公式">   <h3 id="公式升级"><a href="#公式升级" class="headerlink" title="公式升级"></a>公式升级</h3>活跃用户应该被降低在相似度公式中的贡献度<br><img src="//Janson1989.github.io/2019/03/25/推荐系统实战入门学习（二）/相似度矩阵计算升级公式.png" alt="相似度矩阵计算升级公式"><br>用户在不同时间对item的操作给予时间衰减惩罚<br><img src="//Janson1989.github.io/2019/03/25/推荐系统实战入门学习（二）/相似度矩阵计算升级2公式.png" alt="相似度矩阵计算升级2公式"> </li>
+</ol>
+<h1 id="基于用户的协同过滤算法-user-cf"><a href="#基于用户的协同过滤算法-user-cf" class="headerlink" title="基于用户的协同过滤算法(user-cf)"></a>基于用户的协同过滤算法(user-cf)</h1><p>给用户推荐相似兴趣用户感兴趣的物品，主要有两个过程：</p>
+<ul>
+<li>找到相同兴趣用户的集合（基于用户行为相似度）</li>
+<li>找到集合用户感兴趣的而目标用户没行为过的item<h3 id="基本算法-1"><a href="#基本算法-1" class="headerlink" title="基本算法"></a>基本算法</h3></li>
+</ul>
+<ol>
+<li>计算用户相似度矩阵<br><img src="//Janson1989.github.io/2019/03/25/推荐系统实战入门学习（二）/用户相似度矩阵.png" alt="用户相似度矩阵"> <h3 id="公式升级-1"><a href="#公式升级-1" class="headerlink" title="公式升级"></a>公式升级</h3>降低那些异常活跃物品对与用户相似度的贡献<br><img src="//Janson1989.github.io/2019/03/25/推荐系统实战入门学习（二）/用户相似度矩阵升级.png" alt="用户相似度矩阵升级"><br>不同用户对同一item行为的时间段不同应该给予时间惩罚<br><img src="//Janson1989.github.io/2019/03/25/推荐系统实战入门学习（二）/用户相似度矩阵升级2.png" alt="用户相似度矩阵升级2"></li>
+</ol>
+<h1 id="item-cf与user-cf的比较"><a href="#item-cf与user-cf的比较" class="headerlink" title="item-cf与user-cf的比较"></a>item-cf与user-cf的比较</h1><ul>
+<li>推荐实时性：ucf不会随用户的行为马上发生改变</li>
+<li>新用户/新物品的推荐：实时性</li>
+<li>推荐理由的可解释性：user不太好解释，item更好解释</li>
+</ul>
+<h1 id="item-cf与user-cf适用场景"><a href="#item-cf与user-cf适用场景" class="headerlink" title="item-cf与user-cf适用场景"></a>item-cf与user-cf适用场景</h1><ul>
+<li>性能层面考量：用户量大的适合用icf，反之ucf</li>
+<li>个性化层面考虑：icf</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
